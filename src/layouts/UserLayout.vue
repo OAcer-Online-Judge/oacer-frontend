@@ -1,8 +1,14 @@
 <template>
-  <div id="basicLayout">
+  <div id="userLayout">
     <a-layout style="min-height: 100vh">
       <a-layout-header class="header">
-        <GlobalHeader />
+        <a-space>
+          <img
+            src="../assets/logo.png"
+            alt="logo"
+            style="height: 50px; margin: 8px"
+          />
+        </a-space>
       </a-layout-header>
       <a-layout-content class="content">
         <router-view />
@@ -16,22 +22,22 @@
 </template>
 
 <style scoped>
-#basicLayout {
+#userLayout {
+  text-align: center;
+  background: url("https://gw.alipayobjects.com/zos/rmsportal/FfdJeJRQWjEeGTpqgBKj.png")
+    0 0 / 100% 100%;
 }
 
-#basicLayout .header {
-  margin-bottom: 16px;
-  box-shadow: #eee 1px 1px 5px;
+#userLayout .header {
+  margin-top: 16px;
 }
 
-#basicLayout .content {
-  background: linear-gradient(to right, #fefefe, #fff);
+#userLayout .content {
   margin-bottom: 16px;
   padding: 20px;
 }
 
-#basicLayout .footer {
-  background: #f7f8fa;
+#userLayout .footer {
   padding: 16px;
   position: sticky;
   bottom: 0;
@@ -40,10 +46,4 @@
   text-align: center;
 }
 </style>
-<script>
-import GlobalHeader from "@/components/GlobalHeader";
-
-export default {
-  components: { GlobalHeader },
-};
-</script>
+<script></script>

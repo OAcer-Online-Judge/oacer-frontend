@@ -1,5 +1,5 @@
 <template>
-  <a-row id="globalHeader" align="center">
+  <a-row id="globalHeader" align="center" :wrap="false">
     <a-col flex="auto">
       <a-menu
         mode="horizontal"
@@ -13,10 +13,10 @@
         >
           <div class="title-bar">
             <img class="logo" src="../assets/logo.png" alt="logo" />
-            <span class="title">Meow OJ</span>
+            <span class="title">OAcer</span>
           </div>
         </a-menu-item>
-        <a-menu-item v-for="item in routes" :key="item.path">
+        <a-menu-item v-for="item in visibleRoutes" :key="item.path">
           {{ item.name }}
         </a-menu-item>
       </a-menu>
@@ -32,11 +32,13 @@
 <script setup lang="ts">
 import { routes } from "@/router/routes";
 import { useRouter } from "vue-router";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
+import checkAccess from "@/access/checkAccess";
+import ACCESS_ENUM from "@/access/accessEnum";
 
 const router = useRouter();
-
+const store = useStore();
 // Default selected menu item
 const selectedKeys = ref(["/"]);
 
@@ -45,17 +47,29 @@ router.afterEach((to) => {
   selectedKeys.value = [to.path];
 });
 
-const store = useStore();
+// Compute visible routes based on user role and route meta
+const visibleRoutes = computed(() => {
+  return routes.filter((item, index) => {
+    if (item.meta?.hide) {
+      return false;
+    }
+    // Check if user has access to the route
+    if (
+      !checkAccess(store.state.user.loginUser, item?.meta?.access as string)
+    ) {
+      return false;
+    }
+    return true;
+  });
+});
 
 setTimeout(() => {
   store.dispatch("user/getLoginUser", {
     userName: "Mingkai",
-    role: "admin",
+    userRole: ACCESS_ENUM.ADMIN,
   });
   console.log(store.state.user.loginUser);
 }, 3000);
-
-console.log(store.state.user.loginUser);
 
 const doMenuClick = (key: string) => {
   router.push({
