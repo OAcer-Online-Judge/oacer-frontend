@@ -38,11 +38,7 @@
 }
 
 #userLayout .footer {
-  padding: 16px;
-  position: sticky;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  padding: 36px;
   text-align: center;
 }
 </style>
