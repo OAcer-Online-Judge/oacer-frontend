@@ -1,12 +1,16 @@
 <template>
-  <Editor :value="value" :plugins="plugins" @change="handleChange" />
+  <Viewer :value="value" :plugins="plugins" />
 </template>
 
 <script setup lang="ts">
 import gfm from "@bytemd/plugin-gfm";
 import highlight from "@bytemd/plugin-highlight";
-import { Editor } from "@bytemd/vue-next";
-import { defineProps, toRefs, withDefaults } from "vue";
+import { Viewer } from "@bytemd/vue-next";
+import { defineProps, withDefaults } from "vue";
+
+interface Props {
+  value: string;
+}
 
 const plugins = [
   gfm(),
@@ -14,19 +18,9 @@ const plugins = [
   // Add more plugins here
 ];
 
-interface Props {
-  value: string;
-  handleChange: (v: string) => void;
-}
-
 const props = withDefaults(defineProps<Props>(), {
   value: () => "",
-  handleChange: (v: string) => {
-    console.log(v);
-  },
 });
-
-const { value, handleChange } = toRefs(props);
 </script>
 
 <style>

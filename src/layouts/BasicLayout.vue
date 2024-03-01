@@ -8,8 +8,7 @@
         <router-view />
       </a-layout-content>
       <a-layout-footer class="footer">
-        <a href="https://mkpang.space" target="_blank"> OAcer Online Judge </a>
-        <span> ⓒ Copyright Mingkai Pang 2023</span>
+        <span> ⓒ 2024 OAcer Online Judge | All rights reserved</span>
       </a-layout-footer>
     </a-layout>
   </div>
@@ -17,21 +16,24 @@
 
 <style scoped>
 #basicLayout {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 #basicLayout .header {
-  margin-bottom: 16px;
   box-shadow: #eee 1px 1px 5px;
 }
 
 #basicLayout .content {
+  margin: 15px 0;
   background: linear-gradient(to right, #fefefe, #fff);
-  margin-bottom: 16px;
-  padding: 20px;
 }
 
 #basicLayout .footer {
   background: #f7f8fa;
+  backdrop-filter: saturate(200%) blur(1ex);
   padding: 36px;
   text-align: center;
 }

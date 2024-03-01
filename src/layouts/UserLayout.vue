@@ -14,8 +14,7 @@
         <router-view />
       </a-layout-content>
       <a-layout-footer class="footer">
-        <a href="https://mkpang.space" target="_blank"> OAcer Online Judge </a>
-        <span> ⓒ Copyright Mingkai Pang 2023</span>
+        <span> ⓒ 2024 OAcer Online Judge | All rights reserved</span>
       </a-layout-footer>
     </a-layout>
   </div>
@@ -26,6 +25,9 @@
   text-align: center;
   background: url("https://gw.alipayobjects.com/zos/rmsportal/FfdJeJRQWjEeGTpqgBKj.png")
     0 0 / 100% 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 #userLayout .header {
@@ -33,7 +35,7 @@
 }
 
 #userLayout .content {
-  margin-bottom: 16px;
+  margin: 15px 0;
   padding: 20px;
 }
 

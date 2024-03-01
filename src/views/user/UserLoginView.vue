@@ -52,7 +52,7 @@ const store = useStore();
 const handleSubmit = async () => {
   const res = await UserControllerService.userLoginUsingPost(form);
   if (res.code === 0) {
-    alert("Login success" + JSON.stringify(res.data));
+    // alert("Login success" + JSON.stringify(res.data));
     // Get login user
     await store.dispatch("user/getLoginUser");
     // Redirect to home page
@@ -65,3 +65,5 @@ const handleSubmit = async () => {
   }
 };
 </script>
+
+<style scoped></style>
